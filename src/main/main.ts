@@ -145,6 +145,7 @@ ipcMain.handle('add-new-playlist', async (_e, { url, title }) => {
   if (playlist !== null) {
     return m3uParser.savePlaylistToDisk(playlist);
   }
+
   return 'PLAYLIST_PARSING_FAILED';
 });
 

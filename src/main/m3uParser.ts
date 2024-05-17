@@ -17,11 +17,10 @@ export default class M3UParser {
 
   async fetchPlaylist() {
     try {
-      if (this.url && this.url.match(/^https?:\/\/.*\.m3u8?/g)) {
-        const data = await axios.get(this.url);
-        return parse(data.data);
-      }
-      return null;
+
+      const data = await axios.get(this.url);
+      console.log(data);
+      return parse(data.data);
     } catch (error) {
       console.log(error);
       return null;

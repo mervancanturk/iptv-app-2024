@@ -15,12 +15,12 @@ import { useHistory } from 'react-router';
 import styles from './Home.scss';
 import tvsvg from '../../../../assets/icon.png';
 
-declare global {
+/*declare global {
   interface Window {
-    // eslint-disable-next-line
+    eslint-disable-next-line
     electron: any;
   }
-}
+}*/
 
 function Home() {
   const { ipcRenderer } = window.electron; // eslint-disable-next-line
@@ -81,6 +81,7 @@ function Home() {
         title: tmpPlayList.title,
       })
       .then((data: string) => {
+        debugger;
         toaster.closeAll();
         if (data === 'PLAYLIST_ALREADY_EXISTS') {
           // show alert
@@ -314,10 +315,12 @@ function Home() {
               if (value.trim() === '') {
                 setInvalidUrl(true);
                 setUrlErrorMessage('This field is required');
-              } else if (!value.match(/^https?:\/\/.*\.m3u8?/g)) {
+              }
+              /* else if (!value.match(/^https?:\/\/.*\.m3u8?/g)) {
                 setInvalidUrl(true);
                 setUrlErrorMessage('Invalid format');
-              } else {
+              }*/
+              else {
                 setTmpPlayList({
                   ...tmpPlayList,
                   url: e.target.value,
@@ -386,9 +389,11 @@ function Home() {
               if (value.trim() === '') {
                 setInvalidUrl(true);
                 setUrlErrorMessage('This field is required');
+/*
               } else if (!value.match(/^https?:\/\/.*\.m3u8?/g)) {
                 setInvalidUrl(true);
                 setUrlErrorMessage('Invalid format');
+*/
               } else {
                 setInvalidUrl(false);
                 setUrlErrorMessage(null);
